@@ -1,0 +1,30 @@
+.header{
+    background-color: aquamarine;
+}
+
+.fuente-header{
+    font-size: 30px;
+}
+
+.dropdown-menu{
+    background-color: rgb(58, 247, 184);
+    border-color: transparent;
+}
+
+.dropdown-menu-item:hover{
+    background-color: aquamarine;
+}
+
+.secciones-nav:link{
+    text-decoration: none;
+}
+.secciones-nav:visited{
+    text-decoration: none;
+}
+
+.secciones-nav:visited{
+    text-decoration: none;
+}
+.secciones-nav:active{
+    text-decoration: none;
+}
