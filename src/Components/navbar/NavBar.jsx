@@ -23,36 +23,9 @@ function NavBar() {
               Inicio
             </NavLink>
 
-            <NavDropdown
-              title="Categorías"
-              id="collasible-nav-dropdown"
-              className="fuente-header"
-            >
-              <NavLink to="/category/accion">
-                <NavDropdown.Item
-                  href="#action/3.1"
-                  className="dropdown-menu-item"
-                >
-                  Accion
-                </NavDropdown.Item>
-              </NavLink>
-              <NavLink to="/category/aventura">
-                <NavDropdown.Item
-                  href="#action/3.2"
-                  className="dropdown-menu-item"
-                >
-                  Aventura
-                </NavDropdown.Item>
-              </NavLink>
-              <NavLink to="/category/roguelike">
-                <NavDropdown.Item
-                  href="#action/3.3"
-                  className="dropdown-menu-item"
-                >
-                  Roguelike
-                </NavDropdown.Item>
-              </NavLink>
-            </NavDropdown>
+            <NavLink to="/categoria/accion">Accion</NavLink>
+            <NavLink to="/categoria/aventura">Aventura</NavLink>
+            <NavLink to="/categoria/roguelike">Roguelike</NavLink>
           </Nav>
           <Nav>
             <Link to="/carrito">

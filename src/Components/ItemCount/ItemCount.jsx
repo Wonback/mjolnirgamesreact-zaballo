@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const ItemCount = ({ stock = 5, initial = 1, alAgregar }) => {
+const ItemCount = ({ stock = 5, initial = 1, onAdd }) => {
   const [contador, setContador] = useState(initial);
   const restar = () => {
     if (contador > initial) {
@@ -15,8 +15,12 @@ const ItemCount = ({ stock = 5, initial = 1, alAgregar }) => {
     }
   };
 
+  const HandleOnAdd = () => {
+    onAdd(contador);
+  };
+
   return (
-    <div className="card m-5">
+    <div className="card d-inline-flex p-2 m-2">
       <div className="card-header">
         <label htmlFor="">{contador}</label>
       </div>
@@ -33,7 +37,7 @@ const ItemCount = ({ stock = 5, initial = 1, alAgregar }) => {
       <div className="card-footer">
         <button
           className="btn btn-outline-success btn-block"
-          onClick={() => alAgregar(contador)}
+          onClick={HandleOnAdd}
         >
           Agregar al carrito
         </button>
