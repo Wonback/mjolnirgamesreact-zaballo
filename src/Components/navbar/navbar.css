@@ -15,16 +15,6 @@
     background-color: aquamarine;
 }
 
-.secciones-nav:link{
-    text-decoration: none;
-}
-.secciones-nav:visited{
-    text-decoration: none;
-}
-
-.secciones-nav:visited{
-    text-decoration: none;
-}
-.secciones-nav:active{
+a{
     text-decoration: none;
 }
