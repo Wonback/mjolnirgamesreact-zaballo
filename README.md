@@ -11,4 +11,4 @@ Se utilizaron las siguientes dependencias:
 "react-router-dom": "^6.5.0",
 "the-new-css-reset": "^1.7.3"
 
-Se puede visitar una demo del proyecto en el siguente enlace:
+Se puede visitar una demo del proyecto en el siguente enlace: https://celadon-douhua-e18107.netlify.app/
