@@ -3,28 +3,32 @@ import { Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useCartContext } from "../../Context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
+import "./itemdetail.css";
 
-const ItemDetail = ({ product }) => {
+const ItemDetail = ({ DetalleProduct }) => {
   const [isCant, setIsCant] = useState(false);
   const { agregarCarrito } = useCartContext();
   const onAdd = (cantidad) => {
-    agregarCarrito({ ...product, cantidad });
+    agregarCarrito({ ...DetalleProduct, cantidad });
     setIsCant(true);
   };
 
   return (
-    <div className="container border border-3 border-primary rounded">
+    <div
+      key={DetalleProduct.id}
+      className="container border border-3 border-primary rounded"
+    >
       <div className="row ">
         <div className="itemlistsection col">
-          <Card style={{ width: "18rem" }} key={product.id}>
+          <Card style={{ width: "25rem" }}>
             <Card.Img
               variant="top"
-              src={product.foto}
+              src={DetalleProduct.foto}
               className="card-img-top"
             />
             <Card.Body>
-              <Card.Title>{product.nombre}</Card.Title>
-              <Card.Text>Precio: ${product.precio}</Card.Text>
+              <Card.Title>{DetalleProduct.nombre}</Card.Title>
+              <Card.Text>Precio: ${DetalleProduct.precio}</Card.Text>
             </Card.Body>
           </Card>
         </div>
@@ -43,7 +47,7 @@ const ItemDetail = ({ product }) => {
               </NavLink>
             </div>
           ) : (
-            <ItemCount initial={1} onAdd={onAdd} />
+            <ItemCount stock={DetalleProduct.stock} inicio={1} onAdd={onAdd} />
           )}
         </div>
       </div>

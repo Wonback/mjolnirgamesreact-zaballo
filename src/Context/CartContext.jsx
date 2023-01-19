@@ -11,7 +11,7 @@ export const CartContextProvider = ({ children }) => {
     const idx = cartList.findIndex((prod) => prod.id === product.id);
 
     if (idx !== -1) {
-      cartList[idx].cant += product.cant;
+      cartList[idx].cantidad += product.cantidad;
       setCartList([...cartList]);
     } else {
       setCartList([...cartList, product]);
@@ -20,14 +20,17 @@ export const CartContextProvider = ({ children }) => {
 
   const precioTotal = () =>
     cartList.reduce(
-      (contador, producto) => (contador += producto.precio * producto.stock),
+      (contador, producto) => (contador += producto.precio * producto.cantidad),
       0
     );
 
   // monto total
-  const cantidadTotal = () =>
-    cartList.reduce((contador, producto) => (contador += producto.stock), 0);
-
+  const cantidadTotal = () => {
+    return cartList.reduce(
+      (contador, producto) => (contador += producto.cantidad),
+      0
+    );
+  };
   // vaciar todo el carro
   const vaciarCarrito = () => {
     setCartList([]);

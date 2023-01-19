@@ -1,17 +1,18 @@
 import React from "react";
 import { useState } from "react";
 
-const ItemCount = ({ stock = 5, initial = 1, onAdd }) => {
-  const [contador, setContador] = useState(initial);
-  const restar = () => {
-    if (contador > initial) {
-      setContador(contador - 1);
-    }
-  };
+const ItemCount = ({ stock, inicio, onAdd }) => {
+  const [contador, setContador] = useState(inicio);
 
   const sumar = () => {
     if (contador < stock) {
       setContador(contador + 1);
+    }
+  };
+
+  const restar = () => {
+    if (contador > inicio) {
+      setContador(contador - 1);
     }
   };
 
@@ -22,16 +23,17 @@ const ItemCount = ({ stock = 5, initial = 1, onAdd }) => {
   return (
     <div className="card d-inline-flex p-2 m-2">
       <div className="card-header">
-        <label htmlFor="">{contador}</label>
+        <label htmlFor="">Cantidad: {contador}</label>
       </div>
       <div className="card-body">
-        <button onClick={sumar} className="btn btn-outline-primary">
-          {" "}
-          +{" "}
-        </button>
+        
         <button onClick={restar} className="btn btn-outline-primary">
           {" "}
           -{" "}
+        </button>
+        <button onClick={sumar} className="btn btn-outline-primary">
+          {" "}
+          +{" "}
         </button>
       </div>
       <div className="card-footer">

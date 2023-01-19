@@ -18,3 +18,13 @@
 a{
     text-decoration: none;
 }
+
+.secciones-nav{
+    margin-left: 20px;
+}
+
+.navlink{
+    margin: 0 20px;
+    color: black;
+    font-weight: 200;
+}

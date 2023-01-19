@@ -12,30 +12,48 @@ import { useParams } from "react-router-dom";
 import "./itemlistcontainer.css";
 
 const ItemListContainer = () => {
-  const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState([true]);
-  const id = useParams();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
 
   useEffect(() => {
     const dataBase = getFirestore();
     const queryCollection = collection(dataBase, "productos");
-    const queryFiltrada = query(queryCollection, where("categoria", "==", id));
-    getDocs(queryCollection)
-      .then((respuesta) =>
-        setProductos(
-          respuesta.docs.map((product) => ({
-            id: product.id,
-            ...product.data(),
-          }))
+
+    if (id) {
+      const queryFiltrada = query(
+        queryCollection,
+        where("categoria", "==", id)
+      );
+      getDocs(queryFiltrada)
+        .then((respuesta) =>
+          setProducts(
+            respuesta.docs.map((products) => ({
+              id: products.id,
+              ...products.data(),
+            }))
+          )
         )
-      )
-      .catch((error) => console.log(error))
-      .finally(setLoading(false));
+        .catch((error) => console.log(error))
+        .finally(() => setLoading(false));
+    } else {
+      getDocs(queryCollection)
+        .then((respuesta) =>
+          setProducts(
+            respuesta.docs.map((products) => ({
+              id: products.id,
+              ...products.data(),
+            }))
+          )
+        )
+        .catch((error) => console.log(error))
+        .finally(() => setLoading(false));
+    }
   }, [id]);
 
   return (
     <section>
-      {loading ? <Loading /> : <ItemList product={productos} />}
+      {loading ? <Loading /> : <ItemList productos={products} />}
     </section>
   );
 };
